@@ -2,6 +2,11 @@
 This is a simple PS Module outlining what the tactical RMM API can do. Most of this is likely subject to change as the API evolves, but currently, you can use this module to list clients/sites/agents, create clients/sites, and invoke commands on agents, with returned output.
 
 
+# Install
+```
+Install-Module -Name TacticalRMMPS 
+```
+
 # Commands
 
 
