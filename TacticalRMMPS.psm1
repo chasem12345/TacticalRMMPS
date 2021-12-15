@@ -35,8 +35,8 @@ Function Get-TRMMClients {
         Return
     }
 
-    Invoke-RestMethod -Uri "$Script:TRMMURL/clients/$ClientID/" -Headers $Script:TRMMHeaders -Method GET -UseBasicParsing
-
+    $Output = Invoke-RestMethod -Uri "$Script:TRMMURL/clients/$ClientID/" -Headers $Script:TRMMHeaders -Method GET -UseBasicParsing
+    Write-Output $Output
 }
 
 
@@ -51,8 +51,8 @@ Function Get-TRMMSites {
     }
 
     #Super simple. If $ClientID is specified, it only lists sites for that client ID. If not, the value is null, and it lists all sites.
-    Invoke-RestMethod -Uri "$Script:TRMMURL/clients/sites/$SiteID/" -Headers $Script:TRMMHeaders -Method GET -UseBasicParsing
-
+    $Output = Invoke-RestMethod -Uri "$Script:TRMMURL/clients/sites/$SiteID/" -Headers $Script:TRMMHeaders -Method GET -UseBasicParsing
+    Write-Output $Output
 }
 
 function Get-TRMMAgents {
@@ -66,8 +66,8 @@ function Get-TRMMAgents {
     }
     #Quick warning, I do not know how to make this "Filter left", so it returns ALL agents. I could do some artificial filtering, but the request to the server will do the same thing anyways.. This may be a slow one, unless you specify an $AgentID
     
-    Invoke-RestMethod -Uri "$Script:TRMMURL/agents/$AgentID/" -Headers $Script:TRMMHeaders -Method GET -UseBasicParsing
-
+    $Output = Invoke-RestMethod -Uri "$Script:TRMMURL/agents/$AgentID/" -Headers $Script:TRMMHeaders -Method GET -UseBasicParsing
+    Write-Output $Output
 }
 
 function Invoke-TRMMAgentCmd {
@@ -186,4 +186,5 @@ function New-TRMMSite {
         Write-Verbose $PSItem.Exception.Message
         Return
     }
+
 }
